@@ -1,7 +1,7 @@
 # Coin flip streak practice problem
 
 """
-This still needs tons of refinement.
+This needs tons of refinement.
 """
 
 import random
