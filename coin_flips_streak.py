@@ -1,9 +1,7 @@
 # Coin flip streak practice problem
 
 """
-Modified original idea (a set 10,000 trails) by allowing user to input number of trials.
-I could probably refine this by a lot, but it's working for now.
-Revisit when inspiation strikes.
+This still needs tons of refinement.
 """
 
 import random
