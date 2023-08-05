@@ -1,44 +1,48 @@
-# Coin flip streak practice problem
-
-"""
-This needs tons of refinement.
-"""
+#!/usr/bin/env python3
+# coin_flips_streak.py — An exercise in understanding lists.
+# For more information, see README.md
 
 import random
+import logging
+from constants import NUMBER_OF_TRIALS, FLIPS_PER_TRIAL, MIN_STREAK
+
+logging.basicConfig(
+    level=logging.DEBUG,
+    filename="logging.txt",
+    format="%(asctime)s -  %(levelname)s -  %(message)s",
+)
+logging.disable(logging.CRITICAL)  # Note out to enable logging.
 
 
-def streakCounter():
-    numberOfStreaks = 0
-    print("Please enter the integer value of trials you would like to conduct.")
-    print("For more precise results, enter intergers of 10000 or greater.")
-    print("(Note: Precision comes at the cost of time.)")
-    numberOfTrials = input()
-    try:
-        for experimentNumber in range(int(numberOfTrials)):
-            results = []
-            streak = []
-            heads = 0
-            tails = 0
-            for flips in range(100):
-                if random.randint(0, 1) == 0:
-                    results.append("H")
-                else:
-                    results.append("T")
-            while results[heads] == "H":
-                streak.append("H")
-                heads += 1
-                if len(streak) >= 6:
-                    numberOfStreaks += 1
-            while results[tails] == "T":
-                streak.append("T")
-                tails += 1
-                if len(streak) >= 6:
-                    numberOfStreaks += 1
-        print(
-            "Chance of streak: %s%%" % (numberOfStreaks / (int(numberOfTrials) / 100))
-        )
-    except:
-        print("You must enter an integer.")
+def streak_counter(number):
+    number_of_streaks = 0
+
+    for _ in range(number):
+        results = []
+        streak = []
+        heads = 0
+        tails = 0
+        for _ in range(FLIPS_PER_TRIAL):
+            if random.randint(0, 1) == 0:
+                results.append("H")
+            else:
+                results.append("T")
+        while results[heads] == "H":
+            streak.append("H")
+            heads += 1
+            if len(streak) >= MIN_STREAK:
+                number_of_streaks += 1
+        while results[tails] == "T":
+            streak.append("T")
+            tails += 1
+            if len(streak) >= MIN_STREAK:
+                number_of_streaks += 1
+    print(f"Chance of streak: {number_of_streaks / 100}%")
 
 
-streakCounter()
+def main():
+    streak_counter(NUMBER_OF_TRIALS)
+
+
+if __name__ == "__main__":
+    main()
