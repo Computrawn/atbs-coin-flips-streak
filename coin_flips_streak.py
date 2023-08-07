@@ -15,7 +15,7 @@ logging.basicConfig(
 logging.disable(logging.CRITICAL)  # Note out to enable logging.
 
 
-def main():
+def main() -> None:
     total = count_streaks()
     percentage = total / 100
     print(f"Chance of streak of {STREAK_MINIMUM}: {percentage}%")
@@ -50,7 +50,7 @@ def count_duplicates(results: list) -> int:
     return streak_counter
 
 
-def count_streaks():
+def count_streaks() -> int:
     streak_total = 0
 
     for _ in range(NUMBER_OF_TRIALS):
