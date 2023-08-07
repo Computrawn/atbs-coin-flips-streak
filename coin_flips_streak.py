@@ -11,7 +11,9 @@ logging.basicConfig(
     filename="logging.txt",
     format="%(asctime)s -  %(levelname)s -  %(message)s",
 )
-logging.disable(logging.CRITICAL)  # Note out to enable logging.
+# logging.disable(logging.CRITICAL)  # Note out to enable logging.
+
+"""This isn't working as intended. Fix before making public."""
 
 
 def streak_counter(number: int) -> str:
@@ -25,22 +27,26 @@ def streak_counter(number: int) -> str:
                 results.append("H")
             else:
                 results.append("T")
+        logging.debug(results)
 
         while results[heads] == "H":
             streak.append("H")
             heads += 1
 
-            if len(streak) >= MIN_STREAK:
+            if len(streak) == MIN_STREAK:
+                logging.debug(streak)
                 number_of_streaks += 1
 
         while results[tails] == "T":
             streak.append("T")
             tails += 1
 
-            if len(streak) >= MIN_STREAK:
+            if len(streak) == MIN_STREAK:
+                logging.debug(streak)
                 number_of_streaks += 1
 
-    return f"Chance of streak: {number_of_streaks / 100}%"
+    percentage = number_of_streaks / FLIPS_PER_TRIAL
+    return f"Chance of streak: {percentage}%"
 
 
 def main() -> None:
