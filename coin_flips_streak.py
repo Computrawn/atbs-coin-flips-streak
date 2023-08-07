@@ -3,7 +3,7 @@
 # For more information, see README.md
 
 from itertools import groupby
-import random
+from random import choice
 import logging
 from constants import NUMBER_OF_TRIALS, NUMBER_OF_FLIPS, STREAK_MINIMUM
 
@@ -22,7 +22,7 @@ def main() -> None:
 
 
 def flip_coin(number: int) -> list:
-    results = [random.choice(["H", "T"]) for _ in range(number)]
+    results = [choice(["H", "T"]) for _ in range(number)]
     # Non-list-comprehension version for comparison
     # results = []
     # for _ in range(number):
