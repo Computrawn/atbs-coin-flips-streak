@@ -34,7 +34,7 @@ def flip_coin(number: int) -> list:
     return results
 
 
-def count_duplicates(results: list) -> int:
+def find_streak(results: list) -> int:
     streak_counter = 0
     streak = [len(list(group)) for _, group in groupby(results)]
     # Non-list-comprehension version for comparison
@@ -57,7 +57,7 @@ def count_streaks() -> int:
 
     for _ in range(NUMBER_OF_TRIALS):
         results = flip_coin(NUMBER_OF_FLIPS)
-        if count_duplicates(results) > 0:
+        if find_streak(results) > 0:
             streak_total += 1
 
     logging.debug(streak_total)
