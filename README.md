@@ -27,8 +27,10 @@ for experimentNumber in range(10000):
     # Code that checks if there is a streak of 6 heads or tails in a row.  
 print('Chance of streak: %s%%' % (numberOfStreaks / 100))  
 
-Of course, this is only an estimate, but 10,000 is a decent sample size. Some knowledge of mathematics could give you the exact answer and save you the trouble of writing a program, but programmers are notoriously bad at math.
+Of course, this is only an estimate, but 10,000 is a decent sample size. 
 
-Excerpt From Automate the Boring Stuff with Python: Practical Programming for Total Beginners, 2nd Edition  
+Some knowledge of mathematics could give you the exact answer and save you the trouble of writing a program, but programmers are notoriously bad at math.
+
+**Excerpt From Automate the Boring Stuff with Python: Practical Programming for Total Beginners, 2nd Edition  
 Al Sweigart  
-This material may be protected by copyright.
+This material may be protected by copyright.**
