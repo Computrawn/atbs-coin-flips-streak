@@ -1,3 +1,4 @@
+from itertools import groupby
 import random
 import logging
 from constants import NUMBER_OF_TRIALS, FLIPS_PER_TRIAL, MIN_STREAK
@@ -9,19 +10,49 @@ logging.basicConfig(
 )
 # logging.disable(logging.CRITICAL)  # Note out to enable logging.
 
-results, streak, heads, tails = [], [], 0, 0
 
-for _ in range(FLIPS_PER_TRIAL):
-    if random.randint(0, 1):
-        results.append("H")
-    else:
-        results.append("T")
+def coin_flip(number: int) -> list:
+    results = []
+    for _ in range(number):
+        results.append(random.choice(["H", "T"]))
+    logging.debug(results)
+    return results
 
-test_string = "".join(results)
 
-if "H" * 6 in test_string:
-    print("heads streak")
-if "T" * 6 in test_string:
-    print("tails streak")
+def coin_flip_comp(number: int) -> list:
+    results = [random.choice(["H", "T"]) for _ in range(number)]
+    logging.debug(results)
+    return results
 
-logging.debug(test_string)
+
+def count_duplicates(results: list) -> int:
+    streak = []
+    streak_counter = 0
+    for _, group in groupby(results):
+        streak.append(len(list(group)))
+
+    for i in streak:
+        if i >= MIN_STREAK:
+            streak_counter += 1
+
+    logging.debug(streak)
+    logging.debug(streak_counter)
+    return streak_counter
+
+
+def count_duplicates_comp(results: list) -> int:
+    streak_counter = 0
+    streak = [len(list(group)) for _, group in groupby(results)]
+
+    for i in streak:
+        if i >= MIN_STREAK:
+            streak_counter += 1
+
+    logging.debug(streak)
+    logging.debug(streak_counter)
+    return streak_counter
+
+
+results = coin_flip_comp(FLIPS_PER_TRIAL)
+
+count_duplicates_comp(results)
