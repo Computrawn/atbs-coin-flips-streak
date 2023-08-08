@@ -17,9 +17,9 @@ logging.disable(logging.CRITICAL)  # Note out to enable logging.
 
 def main() -> None:
     total = count_streaks()
-    percentage = total / 100
+    percentage = total / (NUMBER_OF_TRIALS / NUMBER_OF_FLIPS)
     print(
-        f"Chance of {STREAK_MINIMUM} consecutive heads or tails per {NUMBER_OF_FLIPS} flips per {NUMBER_OF_TRIALS} trials: {percentage}%"
+        f"Chance of {STREAK_MINIMUM} consecutive heads or tails per {NUMBER_OF_FLIPS} flips in {NUMBER_OF_TRIALS:,} trials: {percentage}%"
     )
 
 
