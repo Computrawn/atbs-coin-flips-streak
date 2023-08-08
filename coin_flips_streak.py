@@ -23,7 +23,7 @@ def main() -> None:
     )
 
 
-def flip_coin(number: int) -> list:
+def flip_coin(number: int) -> list[str]:
     results = [choice(["H", "T"]) for _ in range(number)]
     # Non-list-comprehension version for comparison
     # results = []
@@ -34,7 +34,7 @@ def flip_coin(number: int) -> list:
     return results
 
 
-def find_streak(results: list) -> int:
+def find_streak(results: list[str]) -> int:
     streak_counter = 0
     streak = [len(list(group)) for _, group in groupby(results)]
     # Non-list-comprehension version for comparison
