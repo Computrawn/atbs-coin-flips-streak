@@ -27,7 +27,6 @@ def main() -> None:
 def flip_coin(number: int) -> list[str]:
     """Create and return a list of n H's and T's."""
     results = [choice(["H", "T"]) for _ in range(number)]
-
     logging.debug(results)
     return results
 
@@ -38,10 +37,6 @@ def find_streak(results: list[str]) -> int:
     if the first item is greater than the minimum streak value. Return counter."""
     streak_counter = 0
     streak = [len(list(group)) for _, group in groupby(results)]
-    # Non-list-comprehension version for comparison
-    # streak = []
-    # for _, group in groupby(results):
-    #     streak.append(len(list(group)))
     logging.debug(streak)
     streak.sort(reverse=True)
 
